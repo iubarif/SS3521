@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Container;
 
 namespace CodingChallengeTest
 {
@@ -17,11 +18,13 @@ namespace CodingChallengeTest
         {
 			// TODO: uncomment one of the following two lines depending on whether you're generating numbers with or without padding.
 			var expected = this.GetPlaces("expectedWithoutPadding.csv");
-			//var expected = this.GetPlaces("expectedWithPadding.csv");
+            //var expected = this.GetPlaces("expectedWithPadding.csv");
 
-			//TODO: invoke your code here to generate the "actual.csv" file
+            //TODO: invoke your code here to generate the "actual.csv" file
+            dataTree datatree = new dataTree(new CSVFileGenerator());
+            datatree.GenerateFile();
 
-			var actual = this.GetPlaces(@"C:\Mosharraf\Practice\StemSoft\STEMSOFT Coding Challenge Test Harness\CodingChallenge\bin\Debug\actual.csv");
+            var actual = this.GetPlaces(@"C:\MOSHARRAF\Practice\StemSoft\SS3521\CodingChallenge\bin\Debug\actual.csv");
 
             // Feel free to modify the checks to add additional logging or assertions to assist troubleshooting
 

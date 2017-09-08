@@ -4,13 +4,13 @@ namespace Container
 {
 	public enum placeType
 	{
-		building = 100,
-		freezer = 200,
-		section = 300,
-		frame = 400,
-		rack = 500,
-		shelf = 600,
-		box = 700,
-		position = 1000
+        Building = 100,
+        Freezer = 200,
+        Section = 300,
+        Frame = 400,
+		Rack = 500,
+        Shelf = 600,
+        Box = 700,
+        Position = 1000
 	}
 }

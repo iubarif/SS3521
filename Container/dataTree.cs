@@ -18,21 +18,21 @@ namespace Container
 
 		private void BuildDataTree()
 		{
-			var building = new place { Alias = "Acme Lab", TypeOfPlace = placeType.building };
-			var tank = new place { Alias = "Tank 4", TypeOfPlace = placeType.freezer };
+			var building = new place { Alias = "Acme Lab", TypeOfPlace = placeType.Building };
+			var tank = new place { Alias = "Tank 4", TypeOfPlace = placeType.Freezer };
 
 			// Section 01
-			var section1 = new place { Alias = "Section 1", TypeOfPlace = placeType.section };
+			var section1 = new place { Alias = "Section 1", TypeOfPlace = placeType.Section };
 
 			for (int i = 0; i < 147; i++)
 			{
 
-				var tmpFrame = new place { Alias = string.Format("Frame {0}", (i + 1).ToString()), TypeOfPlace = placeType.frame };
+				var tmpFrame = new place { Alias = string.Format("Frame {0}", (i + 1).ToString()), TypeOfPlace = placeType.Frame };
 
 				for (int j = 0; j < 7; j++)
 				{
 
-					tmpFrame.AddAsChild(new place { Alias = string.Format("Position {0}", (j + 1).ToString()), TypeOfPlace = placeType.position });
+					tmpFrame.AddAsChild(new place { Alias = string.Format("Position {0}", (j + 1).ToString()), TypeOfPlace = placeType.Position });
 				}
 
 				section1.AddAsChild(tmpFrame);
@@ -41,18 +41,18 @@ namespace Container
 
 
 			// Section 02
-			var section2 = new place { Alias = "Section 2", TypeOfPlace = placeType.section };
+			var section2 = new place { Alias = "Section 2", TypeOfPlace = placeType.Section };
 
 
 			for (int i = 0; i < 103; i++)
 			{
 
-				var tmpFrame = new place { Alias = string.Format("Frame {0}", (i + 1).ToString()), TypeOfPlace = placeType.frame };
+				var tmpFrame = new place { Alias = string.Format("Frame {0}", (i + 1).ToString()), TypeOfPlace = placeType.Frame };
 
 				for (int j = 0; j < 7; j++)
 				{
 
-					tmpFrame.AddAsChild(new place { Alias = string.Format("Position {0}", (j + 1).ToString()), TypeOfPlace = placeType.position });
+					tmpFrame.AddAsChild(new place { Alias = string.Format("Position {0}", (j + 1).ToString()), TypeOfPlace = placeType.Position });
 				}
 
 				section2.AddAsChild(tmpFrame);
@@ -60,22 +60,22 @@ namespace Container
 			}
 
 			// Section 03
-			var section3 = new place { Alias = "Section 3", TypeOfPlace = placeType.section };
+			var section3 = new place { Alias = "Section 3", TypeOfPlace = placeType.Section };
 
 			// First set of Racks 
 			for (int i = 0; i < 9; i++)
 			{
-				var rack = new place { Alias = string.Format("Rack {0}", (i + 1).ToString()), TypeOfPlace = placeType.rack };
+				var rack = new place { Alias = string.Format("Rack {0}", (i + 1).ToString()), TypeOfPlace = placeType.Rack };
 
 				for (int j = 0; j < 15; j++)
 				{
-					var level = new place { Alias = string.Format("Level {0}", (j + 1).ToString()), TypeOfPlace = placeType.shelf };
+					var level = new place { Alias = string.Format("Level {0}", (j + 1).ToString()), TypeOfPlace = placeType.Shelf };
 
-					var box = new place { Alias = "Box (9X9)", TypeOfPlace = placeType.box };
+					var box = new place { Alias = "Box (9x9)", TypeOfPlace = placeType.Box };
 
 					for (int k = 0; k < 81; k++)
 					{
-						box.AddAsChild(new place { Alias = string.Format("Position {0}", (k + 1).ToString()), TypeOfPlace = placeType.position });
+						box.AddAsChild(new place { Alias = string.Format("Position {0}", (k + 1).ToString()), TypeOfPlace = placeType.Position });
 					}
 
 					level.AddAsChild(box);
@@ -89,17 +89,17 @@ namespace Container
 			// Second set of Racks
 			for (int i = 9; i < 14; i++)
 			{
-				var rack = new place { Alias = string.Format("Rack {0}", (i + 1).ToString()), TypeOfPlace = placeType.rack };
+				var rack = new place { Alias = string.Format("Rack {0}", (i + 1).ToString()), TypeOfPlace = placeType.Rack };
 
 				for (int j = 0; j < 15; j++)
 				{
-					var level = new place { Alias = string.Format("Level {0}", (j + 1).ToString()), TypeOfPlace = placeType.shelf };
+					var level = new place { Alias = string.Format("Level {0}", (j + 1).ToString()), TypeOfPlace = placeType.Shelf };
 
-					var box = new place { Alias = "Box (5X5)", TypeOfPlace = placeType.box };
+					var box = new place { Alias = "Box (5x5)", TypeOfPlace = placeType.Box };
 
 					for (int k = 0; k < 25; k++)
 					{
-						box.AddAsChild(new place { Alias = string.Format("Position {0}", (k + 1).ToString()), TypeOfPlace = placeType.position });
+						box.AddAsChild(new place { Alias = string.Format("Position {0}", (k + 1).ToString()), TypeOfPlace = placeType.Position });
 					}
 
 					level.AddAsChild(box);
