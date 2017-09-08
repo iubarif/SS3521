@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Container
 {
-	public class CSVFileGenerator : IFileGenerator
+    /*
+     * Generates CSV file
+     */
+
+    public class CSVFileGenerator : IFileGenerator
 	{
 		private StringBuilder _csvContent;
 
@@ -17,7 +21,9 @@ namespace Container
 		public void GenerateFile(IPlace root)
 		{
 			var fileName = "actual.csv";
-			File.Delete(fileName);
+
+            // Delete file if exist
+            File.Delete(fileName);
 
 
 			Traverse(root);
@@ -28,7 +34,8 @@ namespace Container
 			}
 		}
 
-		private void Traverse(IPlace place)
+        // Traverse tree recursively
+        private void Traverse(IPlace place)
 		{
 			if (place != null)
 			{

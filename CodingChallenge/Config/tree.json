@@ -1,0 +1,114 @@
+﻿{
+	"alias": "Acme Lab",
+	"type": "Building",
+	"count": "1",
+	"childs": [{
+		"alias": "Tank 4",
+		"type": "Freezer",
+		"count": "1",
+		"childs": 
+		[
+			{
+				"alias": "Section 1",
+				"type": "Section",
+				"count":"1",
+				"childs": [{
+					"alias" : "Frame",
+					"type": "Frame",
+					"count": 147,
+					"childs": [{
+						"alias" : "Position",
+						"type": "Position",
+						"count": 7
+					}]
+				}]
+			},
+
+			{
+				"alias": "Section 2",
+				"type": "Section",
+				"count":"1",
+				"childs": [{
+					"alias" : "Frame",
+					"type": "Frame",
+					"count": 103,
+					"childs": [{
+						"alias" : "Position",
+						"type": "Position",
+						"count": 7
+					}]
+				}]
+			},
+
+			{
+				"alias": "Section 3",
+				"type": "Section",
+				"count":"1",
+				"childs": 
+				[
+					{
+						"alias": "Rack",
+						"type": "Rack",
+						"count": 9,
+						"childs": 
+						[
+							{
+								"alias":"Level",
+								"type": "Shelf",
+								"count": 15,
+								"childs": 
+								[
+									{
+										"alias":"Box (9x9)",
+										"type": "Box",
+										"count": 1,
+										"childs": 
+										[
+											{
+												"alias" : "Position",
+												"type": "Position",
+												"count": 81
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+
+					{
+						"alias":"Rack",
+						"type": "Rack",
+						"count": 5,
+						"startIndex": 9,
+						"childs": 
+						[
+							{
+								"alias":"Level",
+								"type": "Shelf",
+								"count": 15,
+								"childs": 
+								[
+									{
+										"alias":"Box (5x5)",
+										"type": "Box",
+										"count": 1,
+										"childs": 
+										[
+											{
+												"alias" : "Position",
+												"type": "Position",
+												"count": 25
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}]
+
+}

@@ -18,10 +18,14 @@ namespace Container
 
 		public void AddAsChild(IPlace child)
 		{
-			if ((int)child.TypeOfPlace > (int)this.TypeOfPlace)
+            // Child place type should be always greater than parent type. 
+            // This ensures the hierarchy of places.
+            if ((int)child.TypeOfPlace > (int)this.TypeOfPlace)
 			{
 				this.ChildPlaces.Add(child);
-				child.parent = this;
+
+                // Establishing parent child relationship
+                child.parent = this;
 			}
 			else
 			{
@@ -36,7 +40,8 @@ namespace Container
 
 			place currentPlace = this;
 
-			while (currentPlace.parent != null)
+            // Generating path from parent and grand(n) parent info
+            while (currentPlace.parent != null)
 			{
 				parentpath = currentPlace.parent.Alias + (string.IsNullOrEmpty(parentpath) ? string.Empty : string.Format("/{0}", parentpath));
 				currentPlace = currentPlace.parent;

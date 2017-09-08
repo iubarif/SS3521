@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Container;
+using Container.Config;
+using Newtonsoft.Json;
 
 namespace CodingChallengeTest
 {
@@ -21,10 +23,12 @@ namespace CodingChallengeTest
             //var expected = this.GetPlaces("expectedWithPadding.csv");
 
             //TODO: invoke your code here to generate the "actual.csv" file
-            dataTree datatree = new dataTree(new CSVFileGenerator());
+            var config = JsonConvert.DeserializeObject<node>(File.ReadAllText(@"Config\tree.json"));
+
+            dataTree datatree = new dataTree(new CSVFileGenerator(), config);
             datatree.GenerateFile();
 
-            var actual = this.GetPlaces(@"C:\MOSHARRAF\Practice\StemSoft\SS3521\CodingChallenge\bin\Debug\actual.csv");
+            var actual = this.GetPlaces(Environment.CurrentDirectory +  "\actual.csv");
 
             // Feel free to modify the checks to add additional logging or assertions to assist troubleshooting
 
