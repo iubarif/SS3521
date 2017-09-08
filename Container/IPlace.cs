@@ -14,9 +14,9 @@ namespace Container
 
     public interface IPlace
 	{
-		placeType TypeOfPlace { get; set; }
+		PlaceType TypeOfPlace { get; set; }
 		string Alias { get; set; }
-		place parent { get; set; }
+		Place parent { get; set; }
 		List<IPlace> ChildPlaces { get; }
 
         /// <summary>

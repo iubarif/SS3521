@@ -4,16 +4,16 @@ using System.Text;
 
 namespace Container
 {
-	public class place : IPlace
+	public class Place : IPlace
 	{
-		public place()
+		public Place()
 		{
 			this.ChildPlaces = new List<IPlace>();
 		}
 
-		public placeType TypeOfPlace { get; set; }
+		public PlaceType TypeOfPlace { get; set; }
 		public string Alias { get; set; }
-		public place parent { get; set; }
+		public Place parent { get; set; }
 		public List<IPlace> ChildPlaces { get; }
 
 		public void AddAsChild(IPlace child)
@@ -22,7 +22,7 @@ namespace Container
             // This ensures the hierarchy of places.
             if ((int)child.TypeOfPlace > (int)this.TypeOfPlace)
 			{
-				this.ChildPlaces.Add(child);
+				ChildPlaces.Add(child);
 
                 // Establishing parent child relationship
                 child.parent = this;
@@ -35,10 +35,9 @@ namespace Container
 
 		public string PlaceInfo()
 		{
-
 			var parentpath = string.Empty;
 
-			place currentPlace = this;
+			Place currentPlace = this;
 
             // Generating path from parent and grand(n) parent info
             while (currentPlace.parent != null)
@@ -47,9 +46,8 @@ namespace Container
 				currentPlace = currentPlace.parent;
 			}
 
-			var returnVal = string.Format("{0}, {1}, {2}", this.Alias, parentpath, this.TypeOfPlace.ToString());
+			return $"{Alias}, {parentpath}, {TypeOfPlace.ToString()}";
 
-			return returnVal;
 		}
 
 	}

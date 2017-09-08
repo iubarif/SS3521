@@ -2,7 +2,7 @@
 
 namespace Container
 {
-	public enum placeType
+	public enum PlaceType
 	{
         Building = 100,
         Freezer = 200,

@@ -7,37 +7,37 @@ namespace Container
      * This class is the entry point of the application. 
      * Collect file generation service and configuration and generates data file
      */
-    public class dataTree
+    public class DataTree
 	{
 		private IFileGenerator _fileGenerator;
-		private place _root;
+		private Place _root;
 
 
         // Dependency injection
-        public dataTree(IFileGenerator fileGenerator, node rootConfiguration)
+        public DataTree(IFileGenerator fileGenerator, ConfigNode rootConfiguration)
 		{
 			_fileGenerator = fileGenerator;
 			BuildDataTree(rootConfiguration);
 		}
 
-        private void BuildDataTree(node rootConfiguration)
+        private void BuildDataTree(ConfigNode rootConfiguration)
         {
-            recursiveTreeBuild(ref _root, rootConfiguration);
+            RecursiveTreeBuild(ref _root, rootConfiguration);
         }
 
         // Build in memory tree data structure from provided JSON configuration
-        private void recursiveTreeBuild(ref place parent, node currentNode)
+        private void RecursiveTreeBuild(ref Place parent, ConfigNode currentNode)
         {
             if (parent == null)
             {
-                parent = new place { Alias = currentNode.alias, TypeOfPlace = getPlaceTypeByNodeType(currentNode.type) };
+                parent = new Place { Alias = currentNode.alias, TypeOfPlace = GetPlaceTypeByNodeType(currentNode.type) };
 
                 if (currentNode.childs != null)
                 {
                     if (currentNode.childs.Count > 0)
                     {
                         foreach (var child in currentNode.childs)
-                            recursiveTreeBuild(ref parent, child);
+                            RecursiveTreeBuild(ref parent, child);
                     }
                 }
             }
@@ -45,7 +45,7 @@ namespace Container
             {
                 if (currentNode.count == 1)
                 {
-                    var childPlace = new place { Alias = currentNode.alias, TypeOfPlace = getPlaceTypeByNodeType(currentNode.type) };
+                    var childPlace = new Place { Alias = currentNode.alias, TypeOfPlace = GetPlaceTypeByNodeType(currentNode.type) };
 
                     parent.AddAsChild(childPlace);
 
@@ -54,7 +54,7 @@ namespace Container
                         if (currentNode.childs.Count > 0)
                         {
                             foreach (var child in currentNode.childs)
-                                recursiveTreeBuild(ref childPlace, child);
+                                RecursiveTreeBuild(ref childPlace, child);
                         }
                     }
                 }
@@ -62,11 +62,9 @@ namespace Container
                 {
                     for (int i = currentNode.startIndex; i < currentNode.startIndex + currentNode.count; i++)
                     {
-                        var childPlace = new place
+                        var childPlace = new Place
                         {
-                            Alias = string.Format("{0} {1}", currentNode.alias, (i + 1).ToString())
-                            ,
-                            TypeOfPlace = getPlaceTypeByNodeType(currentNode.type)
+                            Alias = $"{currentNode.alias} {(i + 1).ToString()}", TypeOfPlace = GetPlaceTypeByNodeType(currentNode.type)
                         };
 
                         parent.AddAsChild(childPlace);
@@ -76,7 +74,7 @@ namespace Container
                             if (currentNode.childs.Count > 0)
                             {
                                 foreach (var child in currentNode.childs)
-                                    recursiveTreeBuild(ref childPlace, child);
+                                    RecursiveTreeBuild(ref childPlace, child);
                             }
                         }
                     }
@@ -86,28 +84,28 @@ namespace Container
 
         }
 
-        private placeType getPlaceTypeByNodeType(nodeType nodeType)
+        private PlaceType GetPlaceTypeByNodeType(NodeType nodeType)
         {
             switch (nodeType)
             {
-                case nodeType.Building:
-                    return placeType.Building;
-                case nodeType.Freezer:
-                    return placeType.Freezer;
-                case nodeType.Section:
-                    return placeType.Section;
-                case nodeType.Frame:
-                    return placeType.Frame;
-                case nodeType.Rack:
-                    return placeType.Rack;
-                case nodeType.Shelf:
-                    return placeType.Shelf;
-                case nodeType.Box:
-                    return placeType.Box;
-                case nodeType.Position:
-                    return placeType.Position;
+                case NodeType.Building:
+                    return PlaceType.Building;
+                case NodeType.Freezer:
+                    return PlaceType.Freezer;
+                case NodeType.Section:
+                    return PlaceType.Section;
+                case NodeType.Frame:
+                    return PlaceType.Frame;
+                case NodeType.Rack:
+                    return PlaceType.Rack;
+                case NodeType.Shelf:
+                    return PlaceType.Shelf;
+                case NodeType.Box:
+                    return PlaceType.Box;
+                case NodeType.Position:
+                    return PlaceType.Position;
                 default:
-                    return placeType.Position;
+                    return PlaceType.Position;
             }
         }
 

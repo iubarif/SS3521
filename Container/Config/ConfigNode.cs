@@ -10,16 +10,16 @@ namespace Container.Config
      * will be used to read JSON configuration, the configuration file will be stored a client application    
      */
 
-    public class node
+    public class ConfigNode
     {
         public string alias { get; set; }
-        public nodeType type { get; set; }
+        public NodeType type { get; set; }
         public int count { get; set; }
-        public List<node> childs { get; set; }
+        public List<ConfigNode> childs { get; set; }
         public int startIndex { get; set; } = 0;
     }
 
-    public enum nodeType
+    public enum NodeType
     {
         Building = 100,
         Freezer = 200,

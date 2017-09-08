@@ -10,9 +10,9 @@ namespace CodingChallenge
         static void Main(string[] args)
         {
             // TODO: invoke your code here, OR use the unit test to invoke your code and compare to one of the two provided expected files.                        
-            var node = JsonConvert.DeserializeObject<node>(File.ReadAllText(@"..\..\Config\tree.json"));
+            var node = JsonConvert.DeserializeObject<ConfigNode>(File.ReadAllText(@"..\..\Config\tree.json"));
 
-            dataTree datatree = new dataTree(new CSVFileGenerator(), node);
+            DataTree datatree = new DataTree(new CSVFileGenerator(), node);
             datatree.GenerateFile();            
         }
     }

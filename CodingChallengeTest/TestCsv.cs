@@ -23,9 +23,9 @@ namespace CodingChallengeTest
             //var expected = this.GetPlaces("expectedWithPadding.csv");
 
             //TODO: invoke your code here to generate the "actual.csv" file
-            var config = JsonConvert.DeserializeObject<node>(File.ReadAllText(@"Config\tree.json"));
+            var config = JsonConvert.DeserializeObject<ConfigNode>(File.ReadAllText(@"Config\tree.json"));
 
-            dataTree datatree = new dataTree(new CSVFileGenerator(), config);
+            DataTree datatree = new DataTree(new CSVFileGenerator(), config);
             datatree.GenerateFile();
 
             var actual = this.GetPlaces(Environment.CurrentDirectory +  "\actual.csv");
