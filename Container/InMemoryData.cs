@@ -7,17 +7,20 @@ namespace Container
      * This class is the entry point of the application. 
      * Collect file generation service and configuration and generates data file
      */
-    public class DataTree
+    public class InMemoryData
 	{
 		private IFileGenerator _fileGenerator;
+		private ICustomConfiguration _customConfiguration;
 		private Place _root;
 
 
         // Dependency injection
-        public DataTree(IFileGenerator fileGenerator, ConfigNode rootConfiguration)
+        public InMemoryData(IFileGenerator fileGenerator, ICustomConfiguration customConfiguration)
 		{
 			_fileGenerator = fileGenerator;
-			BuildDataTree(rootConfiguration);
+			_customConfiguration = customConfiguration;
+
+			BuildDataTree(_customConfiguration.GetDataStructureConfiguration());
 		}
 
         private void BuildDataTree(ConfigNode rootConfiguration)
@@ -30,50 +33,50 @@ namespace Container
         {
             if (parent == null)
             {
-                parent = new Place { Alias = currentNode.alias, TypeOfPlace = GetPlaceTypeByNodeType(currentNode.type) };
+                parent = new Place { Alias = currentNode.Alias, TypeOfPlace = GetPlaceTypeByNodeType(currentNode.Type) };
 
-                if (currentNode.childs != null)
+                if (currentNode.Childs != null)
                 {
-                    if (currentNode.childs.Count > 0)
+                    if (currentNode.Childs.Count > 0)
                     {
-                        foreach (var child in currentNode.childs)
+                        foreach (var child in currentNode.Childs)
                             RecursiveTreeBuild(ref parent, child);
                     }
                 }
             }
             else
             {
-                if (currentNode.count == 1)
+                if (currentNode.Count == 1)
                 {
-                    var childPlace = new Place { Alias = currentNode.alias, TypeOfPlace = GetPlaceTypeByNodeType(currentNode.type) };
+                    var childPlace = new Place { Alias = currentNode.Alias, TypeOfPlace = GetPlaceTypeByNodeType(currentNode.Type) };
 
                     parent.AddAsChild(childPlace);
 
-                    if (currentNode.childs != null)
+                    if (currentNode.Childs != null)
                     {
-                        if (currentNode.childs.Count > 0)
+                        if (currentNode.Childs.Count > 0)
                         {
-                            foreach (var child in currentNode.childs)
+                            foreach (var child in currentNode.Childs)
                                 RecursiveTreeBuild(ref childPlace, child);
                         }
                     }
                 }
                 else
                 {
-                    for (int i = currentNode.startIndex; i < currentNode.startIndex + currentNode.count; i++)
+                    for (int i = currentNode.StartIndex; i < currentNode.StartIndex + currentNode.Count; i++)
                     {
                         var childPlace = new Place
                         {
-                            Alias = $"{currentNode.alias} {(i + 1).ToString()}", TypeOfPlace = GetPlaceTypeByNodeType(currentNode.type)
+                            Alias = $"{currentNode.Alias} {(i + 1).ToString()}", TypeOfPlace = GetPlaceTypeByNodeType(currentNode.Type)
                         };
 
                         parent.AddAsChild(childPlace);
 
-                        if (currentNode.childs != null)
+                        if (currentNode.Childs != null)
                         {
-                            if (currentNode.childs.Count > 0)
+                            if (currentNode.Childs.Count > 0)
                             {
-                                foreach (var child in currentNode.childs)
+                                foreach (var child in currentNode.Childs)
                                     RecursiveTreeBuild(ref childPlace, child);
                             }
                         }

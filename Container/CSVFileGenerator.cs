@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 
 namespace Container
 {
-    /*
+	/*
      * Generates CSV file
      */
 
-    public class CSVFileGenerator : IFileGenerator
+	public class CSVFileGenerator : IFileGenerator
 	{
 		private StringBuilder _csvContent;
 
