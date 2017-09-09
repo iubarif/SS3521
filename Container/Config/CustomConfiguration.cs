@@ -1,15 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Container.Config
+namespace Laboratory.Domain.Config
 {
-	public class CustomConfiguration : ICustomConfiguration
+    // Get data structure configuration from JSON configuration file
+    public class CustomConfiguration : ICustomConfiguration
 	{
 		public ConfigNode GetDataStructureConfiguration()
 		{

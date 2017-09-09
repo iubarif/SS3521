@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Container.Config
+namespace Laboratory.Domain.Config
 {
 	/*
      * will be used to read JSON configuration, the configuration file will be stored a client application    

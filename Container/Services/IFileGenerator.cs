@@ -1,4 +1,4 @@
-﻿namespace Container
+﻿namespace Laboratory.Domain
 {
 	/*
      * This service allows us to generate any kinds of file. 

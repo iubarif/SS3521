@@ -69,9 +69,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Container\Container.csproj">
+    <ProjectReference Include="..\Container\Laboratory.Domain.csproj">
       <Project>{44cff38f-e260-403b-8420-d36df3b4a891}</Project>
-      <Name>Container</Name>
+      <Name>Laboratory.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

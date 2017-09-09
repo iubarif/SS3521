@@ -1,4 +1,4 @@
-﻿namespace Container.Config
+﻿namespace Laboratory.Domain.Config
 {
 	public enum NodeType
     {

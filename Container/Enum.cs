@@ -1,4 +1,4 @@
-﻿namespace Container
+﻿namespace Laboratory.Domain
 {
 	public enum PlaceType
 	{

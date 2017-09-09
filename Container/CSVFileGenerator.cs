@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace Container
+namespace Laboratory.Domain
 {
 	/*
      * Generates CSV file

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Container;
-using Container.Config;
+using Laboratory.Domain;
+using Laboratory.Domain.Config;
 
 namespace CodingChallengeTest
 {
-	[DeploymentItem("Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll")]
+    [DeploymentItem("Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll")]
     [TestClass]
     public class TestCsv
     {
@@ -23,8 +23,13 @@ namespace CodingChallengeTest
             //var expected = this.GetPlaces("expectedWithPadding.csv");
 
             //TODO: invoke your code here to generate the "actual.csv" file
-            InMemoryData datatree = new InMemoryData(new CSVFileGenerator(), new CustomConfiguration());
-            datatree.GenerateFile();
+            InMemoryData dataTree = new InMemoryData(
+                new CSVFileGenerator(), 
+                new CustomConfiguration(), 
+                new TreeBuildService()
+                );
+
+            dataTree.GenerateFile();
 
             var actual = this.GetPlaces(Environment.CurrentDirectory +  "\\actual.csv");
 

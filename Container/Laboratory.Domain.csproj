@@ -7,8 +7,8 @@
     <ProjectGuid>{44CFF38F-E260-403B-8420-D36DF3B4A891}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Container</RootNamespace>
-    <AssemblyName>Container</AssemblyName>
+    <RootNamespace>Laboratory.Domain</RootNamespace>
+    <AssemblyName>Laboratory.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -49,12 +49,14 @@
     <Compile Include="Config\NodeType.cs" />
     <Compile Include="CSVFileGenerator.cs" />
     <Compile Include="Enum.cs" />
-    <Compile Include="Config\ICustomConfiguration .cs" />
-    <Compile Include="IFileGenerator.cs" />
+    <Compile Include="Services\ICustomConfiguration .cs" />
+    <Compile Include="Services\IFileGenerator.cs" />
     <Compile Include="InMemoryData.cs" />
-    <Compile Include="IPlace.cs" />
+    <Compile Include="Services\IPlace.cs" />
+    <Compile Include="Services\ITreeBuildService.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TreeBuildService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

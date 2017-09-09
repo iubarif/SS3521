@@ -1,14 +1,24 @@
-﻿using Container;
-using Container.Config;
+﻿using Laboratory.Domain;
+using Laboratory.Domain.Config;
+using Microsoft.Practices.Unity;
 
 namespace CodingChallenge
 {
-	class Program
+    class Program
     {
 		static void Main(string[] args)
 		{
-			InMemoryData datatree = new InMemoryData(new CSVFileGenerator(), new CustomConfiguration());
-			datatree.GenerateFile();
+
+            // Unity IoC container to resolve dependency injection 
+            var container = new UnityContainer();
+
+            container.RegisterType<IFileGenerator, CSVFileGenerator>();
+            container.RegisterType<ICustomConfiguration, CustomConfiguration>();
+            container.RegisterType<ITreeBuildService, TreeBuildService>();
+
+            InMemoryData datatree = container.Resolve<InMemoryData>();
+            
+            datatree.GenerateFile();
 		}
     }
 }

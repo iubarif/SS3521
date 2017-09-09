@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Container
+namespace Laboratory.Domain
 {
 	public class Place : IPlace
 	{
@@ -19,7 +19,7 @@ namespace Container
 		{
             // Child place type should be always greater than parent type. 
             // This ensures the hierarchy of places.
-            if ((int)child.TypeOfPlace > (int)this.TypeOfPlace)
+            if ((int)child.TypeOfPlace > (int)TypeOfPlace)
 			{
 				ChildPlaces.Add(child);
 
@@ -41,7 +41,7 @@ namespace Container
             // Generating path from parent and grand(n) parent info
             while (currentPlace.parent != null)
 			{
-				parentpath = currentPlace.parent.Alias + (string.IsNullOrEmpty(parentpath) ? string.Empty : string.Format("/{0}", parentpath));
+				parentpath = currentPlace.parent.Alias + (string.IsNullOrEmpty(parentpath) ? string.Empty : $"/{parentpath}");
 				currentPlace = currentPlace.parent;
 			}
 
